@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عنوان الصفحة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=" crossorigin="anonymous" />
+    <style>
+        @font-face {
+            font-family: 'Algeria';
+            src: url('path/to/Algeria.ttf') format('truetype'); /* استبدل path/to/Algeria.ttf بمسار ملف الخط */
+        }
+        body {
+            font-family: 'Algeria', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative; /* Add relative position to contain absolute elements */
+        }
+        .header {
+            background-color: #004080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .header .logo {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 24px;
+            color: white;
+        }
+        .header img {
+            max-height: 100px; /* يمكنك تعديل هذا الحجم حسب الحاجة */
+        }
+        .main-content {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .footer p {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 10s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+        .modal {
+            display: block; /* Show the modal by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4); /* Add a shadow */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: right; /* Align text to the right */
+            animation: modal-appear 0.5s left;
+            text-align: center; /* Center align content inside modal */
+            position: relative; /* Relative position for containing absolute elements */
+        }
+        .error-message {
+            color: red;
+            font-size: 12pt;
+            display: none;
+        }
+        .input-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-container i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+        .input-container input {
+            width: calc(100% - 40px); /* Adjust width to make space for the icon */
+            padding-right: 30px; /* Add space for the icon */
+        }
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px; /* Optional margin for spacing */
+        }
+        .text-box {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            text-align: center;
+        }
+        .animated-text {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+            border-right: 1px solid #ffffff;
+            padding-right: 10px; /* For caret effect */
+            color: #ffffff;
+            font-size: 18px;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ffffff }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <i class="fab fa-font-awesome"></i>
+            <div class="logo">موقعنا</div>
+        </div>
+        <div class="main-content">
+            <p>هذا هو النص الرئيسي للصفحة. يمكنك هنا إضافة محتوى الموقع مثل المقالات، الصور، والفيديوهات.</p>
+        </div>
+        <div class="footer">
+            <p>جميع الحقوق محفوظة &copy; 2024</p>
+        </div>
+    </div>
+
+    <!-- نافذة تسجيل الدخول -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <img src="c:\Users\ak\Downloads\الجمهورية الجزائرية الديمقراطية الشعبية.png">
+            <h2>تسجيل الدخول</h2>
+            <form id="login-form">
+                <div class="input-container">
+                    <label for="username">اسم المستخدم:</label>
+                    <input type="text" id="username" name="username" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-container">
+                    <label for="password">كلمة المرور:</label>
+                    <input type="password" id="password" name="password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+                <input type="submit" value="تسجيل الدخول">
+            </form>
+            <p id="error-message" class="error-message">إسم المستخدم أو كلمة المرور خاطئين يرجى إعادة المحاولة</p>
+            <div class="text-box">
+                <p class="animated-text">مرحبا بكم في الأرضية الرقمية لوزارة التجارة و ترقية الصادرات</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // عرض نافذة تسجيل الدخول عند الحاجة
+        document.getElementById('login-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('login-modal').style.display = 'block';
+            document.body.style.pointerEvents = 'none'; // Disable clicks outside the modal
+            document.querySelector('.modal-content').style.pointerEvents = 'auto'; // Enable clicks inside the modal
+        });
+
+        // إغلاق نافذة تسجيل الدخول عند النقر على الشاشة خارجها
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('login-modal')) {
+                document.getElementById('login-modal').style.display = 'none';
+                document.body.style.pointerEvents = 'auto'; // Re-enable clicks outside the modal
+            }
+        };
+
+        // تسجيل الدخول
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            if (username === "omar21" || password === "WAxx32Pi") {
+                document.getElementById('error-message').style.display = 'block';
+            } else {
+                document.getElementById('login-modal').style.display = 'none';
+                document.body.style.pointerEvents = 'auto'; // Re-enable clicks outside the modal
+                document.querySelector('.main-content').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
